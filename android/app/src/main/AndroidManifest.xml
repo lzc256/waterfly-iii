@@ -67,6 +67,9 @@
         </intent>
 
         <!-- App queries for some well-known financial apps for the notification listener -->
+        <package android:name="com.tencent.mm"/>
+        <package android:name="com.eg.android.AlipayGphone"/>
+
         <package android:name="agency.sevenofnine.erstewallet.production"/>
         <package android:name="air.app.scb.breeze.android.main.in.prod"/>
         <package android:name="air.app.scb.breeze.android.main.sg.prod"/>
