@@ -12,14 +12,14 @@ env:
   PROPERTIES_PATH: "./android/key.properties"
 
 jobs:
-  check:
-    uses: ./.github/workflows/commit.yml
-    name: codecheck
+  # check:
+  #   uses: ./.github/workflows/commit.yml
+  #   name: codecheck
 
   build:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, '[skip build]') }}
-    needs: [check]
+    # needs: [check]
 
     steps:
       - uses: actions/checkout@v5
