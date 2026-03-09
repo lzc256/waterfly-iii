@@ -8,6 +8,7 @@ environment:
   sdk: '>=3.7.0 <4.0.0'
 
 dependencies:
+  rename: ^3.0.0 # To avoid conflict while testing
   flutter:
     sdk: flutter
   flutter_localizations:
