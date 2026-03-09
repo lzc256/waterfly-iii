@@ -298,10 +298,23 @@ class AppCard extends StatefulWidget {
 }
 
 class _AppCardState extends State<AppCard> {
+  late TextEditingController regexController;
   final TextEditingController accountTextController = TextEditingController();
   final FocusNode accountFocusNode = FocusNode();
 
   String? appAccountId;
+  
+  @override
+  void initState() {
+    super.initState();
+    regexController = TextEditingController(text: widget.settings.regex);
+  }
+  @override
+  void dispose() {
+    regexController.dispose();
+    // accountFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -419,6 +432,23 @@ class _AppCardState extends State<AppCard> {
                           );
                     },
                   ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+    controller: regexController,
+    decoration: InputDecoration(
+      label: const Text("Regex"),
+      icon: const Icon(Icons.code),
+      border: const OutlineInputBorder(),
+      hintText: "e.g. ^Total: (\\d+)",
+    ),
+    onChanged: (String value) async {
+      widget.settings.regex = value.isEmpty ? null : value;
+      await context.read<SettingsProvider>().notificationSetAppSettings(
+        widget.app,
+        widget.settings,
+      );
+    },
+  ),
                 ],
               ),
             ),
