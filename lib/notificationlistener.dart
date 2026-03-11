@@ -77,7 +77,7 @@ void nlCallback() {
     if (evt == null || evt.packageName == null) {
       return;
     }
-    if (evt.packageName?.startsWith("com.dreautall.waterflyiii") ?? false) {
+    if ((evt.packageName?.startsWith("com.dreautall.waterflyiii") ?? false) || (evt.packageName?.startsWith("com.waterflyiii.test") ?? false)) {
       return;
     }
     if (evt.state == NotificationState.remove) {
